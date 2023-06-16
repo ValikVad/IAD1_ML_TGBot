@@ -1,6 +1,6 @@
-# TG-Bot epta
+# TG-Bot Translator RUS<->EN
 
-create venv for work this bot 
+create venv for start this bot 
 
 ```
 python3 -m venv tg-env
@@ -11,7 +11,7 @@ source tg-env/bin/activate
 
 
 use req.txt!
-for quiqck start use next command
+for quick start use next command
 ```
 pip install -r requirements.txt
 python3 main.py
