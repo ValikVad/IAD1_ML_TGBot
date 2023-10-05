@@ -49,12 +49,14 @@ async def req4(msg: Message, state: FSMContext, bot: Bot):
     text_for_tr = utils.text_recognise(Image.open(content), "en")
     # aiogram.methods.send_message.SendMessage(text=re.sub('\W+',' ', text_for_tr))
     # text_for_tr = re.sub('\W+\,\.',' ', text_for_tr)
-    await msg.answer(text=re.sub('\W+',' ', text_for_tr))
+    if (re.sub('\W+',' ', text_for_tr) != " "):
+        await msg.answer(text=re.sub('\W+',' ', text_for_tr))
 
-    t = utils.text_translate(text_for_tr, "en")
-    await msg.answer(text= re.sub('\W+\.\,',' ', t))
+        t = utils.text_translate(text_for_tr, "en")
+        if (re.sub('\W+',' ', t) != " "):
+            await msg.answer(text= re.sub('\W+\.\,',' ', t))
 
-    await msg.answer(text=text.text_recognition_only, reply_markup=keyboards.menu)
+    await msg.answer(text=text.menu, reply_markup=keyboards.menu)
 
 
 @router.message(Gen.rus, F.photo)
@@ -66,12 +68,14 @@ async def req4___(msg: Message, state: FSMContext, bot: Bot):
     text_for_tr = utils.text_recognise(Image.open(content), "rus")
     # text_for_tr =  
     # print(text_for_tr)
-    await msg.answer(text=re.sub('\W+',' ', text_for_tr))
-    
-    t = utils.text_translate(text_for_tr, "rus")
-    # t =  re.sub('\W+',' ', t)
-    await msg.answer(text=re.sub('\W+\.\,',' ', t))
-    await msg.answer(text=text.text_recognition_only, reply_markup=keyboards.menu)
+    if (re.sub('\W+',' ', text_for_tr) != " "):
+        await msg.answer(text=re.sub('\W+',' ', text_for_tr))
+        
+        t = utils.text_translate(text_for_tr, "rus")
+        # t =  re.sub('\W+',' ', t)
+        if (re.sub('\W+',' ', t) != " "):
+            await msg.answer(text=re.sub('\W+\.\,',' ', t))
+    await msg.answer(text=text.menu, reply_markup=keyboards.menu)
 
 
         
